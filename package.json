@@ -1,0 +1,19 @@
+{
+  "name": "study-ar-board",
+  "version": "1.0.0",
+  "description": "A Study Augmented Reality App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aviator2276/study-ar-board.git"
+  },
+  "author": "Caleb, Emmett, JD, Uriah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aviator2276/study-ar-board/issues"
+  },
+  "homepage": "https://github.com/Aviator2276/study-ar-board#readme"
+}
