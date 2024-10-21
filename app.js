@@ -5,7 +5,6 @@ const cors = require('cors');
 const rateLimiter = require('express-rate-limit');
 const path = require('path');
 const app = express();
-const apiRouter = require('./routes/apiRouter');
 
 /*
 app.use(
