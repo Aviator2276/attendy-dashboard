@@ -1,11 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>hello world</h1>
-  </body>
+<head class="dark">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout | Home</title>
+
+    <link href="../css/index-tailwind.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+    <script src="../js/onload.js"></script>
+</head>
+<body class="h-full bg-slate-100 dark:bg-slate-900 transition-all">
+    <!--
+        BACKGROUND
+        bg-slate-100
+        dark:bg-slate-900
+
+        ACCENT BACKGROUND
+        bg-emerald-700
+    -->
+    <aside class="sticky">
+        <button type="button" id="mobileNavbarButton" class="sticky items-center p-2 mt-2 ms-3 text-sm text-slate-500 rounded-lg md:hidden hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-700">
+            <span class="sr-only">Open sidebar</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+            </svg>                  
+         </button>
+    </aside>
+    <div class="relative">
+        <nav id="navbar" class="fixed block left-0 top-0 z-50 w-52 h-screen transition-all -translate-x-full md:translate-x-0">
+            <div class="h-full overflow-y-hidden px-2 py-4 bg-emerald-700 flex flex-col">
+                <ul class="space-y-2 font-medium">
+                    <li>
+                        <a href="#" class="flex items-center rounded-lg p-2 bg-emerald-800 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke="currentColor" class="h-8 w-8 transition duration-75 text-slate-100">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>
+                            <span class="flex-1 ms-4 whitespace-nowrap navbar-text transition-all">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center rounded-lg p-2 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke="currentColor" class="h-8 w-8 transition duration-75 group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                            </svg>                              
+                            <span class="flex-1 ms-4 whitespace-nowrap navbar-text transition-all">Storage</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center rounded-lg p-2 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke="currentColor"  class="h-8 w-8 transition duration-75 group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>                              
+                            <span class="flex-1 ms-4 whitespace-nowrap navbar-text transition-all">New Form</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center rounded-lg p-2 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke="currentColor" class="h-8 w-8 transition duration-75 group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                            </svg>                              
+                            <span class="flex-1 ms-4 whitespace-nowrap navbar-text transition-all">New Issue</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center rounded-lg p-2 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke="currentColor" class="h-8 w-8 transition duration-75 group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                            </svg>                              
+                            <span class="flex-1 ms-4 whitespace-nowrap navbar-text transition-all">Pre-Scouting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center rounded-lg p-2 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke="currentColor" class="h-8 w-8 transition duration-75 group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                            </svg>                   
+                            <span class="flex-1 ms-4 whitespace-nowrap navbar-text transition-all">Analysis</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul id="navbarQuickAction" class="relative space-y-2 h-12 mb-2 left-0 right-0 mt-auto flex flex-row flex-wrap justify-around items-end transition-all">
+                    <li>
+                        <button type="button" class="rounded-lg p-2 bg-emerald-800 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.25" stroke="currentColor" viewBox="0 0 24 24" class="w-8 h-8 mx-auto group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>                              
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" id="darkModeSwitch" class="rounded-lg p-2 bg-emerald-800 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="darkModeIcon" fill="none" stroke-width="1.25" stroke="currentColor" viewBox="0 0 24 24" class="w-8 h-8 mx-auto transition-all group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                            </svg>                              
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" id="navbarMinimize" class="rounded-lg p-2 bg-emerald-800 hover:bg-emerald-600 text-slate-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="navbarArrow" fill="none" stroke-width="1.25" stroke="currentColor" viewBox="0 0 24 24" class="w-8 h-8 mx-auto transition-transform -scale-100 group-hover:text-slate-100 text-slate-300">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <main id="mainContent" class="ml-0 md:ml-52 2xl:ml-0 transition-transform">
+        <div class="mb-28 w-16 -scale-100 rotate-90 md:ml-16 -translate-x-full hidden"></div>
+        <header class="shadow">
+            <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
+                <h1 class="m-2 md:m-4 text-4xl font-bold text-slate-800 dark:text-slate-200">Components</h1>
+                <p class="m-2 md:m-4 text-1xl text-slate-800 dark:text-slate-200">Welcome to the Components Page. This will list out the guidelines and components for the Chargers Scouting Application.</p>
+            </div>
+        </header>
+        <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
+            <section class="m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700">
+                <p class="mb-2 text-3xl font-bold py-2 text-slate-800 dark:text-slate-200">Primary Container</p>
+                <p class="text-md text-slate-800 dark:text-slate-200">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita quas quae alias mollitia sint atque voluptate eius qui unde! Quas.</p>
+            </section>
+            <div class="flex flex-wrap md:flex-nowrap">
+                <section class="m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700">
+                    <p class="mb-2 text-3xl font-bold py-2 text-slate-800 dark:text-slate-200">Secondary Container</p>
+                    <p class="text-md text-slate-800 dark:text-slate-200">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita quas quae alias mollitia sint atque voluptate eius qui unde! Quas.</p>
+                </section>
+                <section class="m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700">
+                    <p class="mb-2 text-3xl font-bold py-2 text-slate-800 dark:text-slate-200">Third Container</p>
+                    <p class="text-md text-slate-800 dark:text-slate-200">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita quas quae alias mollitia sint atque voluptate eius qui unde! Quas.</p>
+                </section>
+            </div>
+            <div class="m-2 md:m-4">
+                <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-200">Badges</h3>
+                <p class="text-1xl text-slate-800 dark:text-slate-200">Badges are used to communicate and update statuses to the user.</p>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-green-700 border-green-700 dark:text-green-400 dark:border-green-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <div>Last Updated: 12:00 PM</div>
+                </span>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-yellow-600 border-yellow-600 dark:text-yellow-400 dark:border-yellow-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" />
+                    </svg>
+                    <div>On Device</div>
+                </span>
+                <span class="m-2 md:m-4 animate-pulse text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-teal-700 border-teal-700 dark:text-teal-400 dark:border-teal-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 101" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5 animate-spin text-slate-200 dark:text-slate-800 fill-teal-700 dark:fill-teal-400">
+                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                    </svg>
+                    <div>Uploading</div>
+                </span>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-sky-700 border-sky-700 dark:text-sky-400 dark:border-sky-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+                    </svg>
+                    <div>Saved to Cloud</div>
+                </span>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-red-700 border-red-700 dark:text-red-400 dark:border-red-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m3 3 8.735 8.735m0 0 1 1 .53.53m-.53-.53.53.53m0 0L21 21 M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+                    </svg>
+                    <div>No Internet</div>
+                </span>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-sky-700 border-sky-700 dark:text-sky-400 dark:border-sky-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+                    </svg>
+                    <div>Connected</div>
+                </span>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-indigo-700 border-indigo-700 dark:text-indigo-400 dark:border-indigo-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5 animate-spin">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                    <div>Saving to Device</div>
+                </span>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-indigo-700 border-indigo-700 dark:text-indigo-400 dark:border-indigo-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0 1 18 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3 1.5 1.5 3-3.75" />
+                    </svg>
+                    <div>Draft Saved</div>
+                </span>
+                <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border text-indigo-700 border-indigo-700 dark:text-indigo-400 dark:border-indigo-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <div>Form Saved</div>
+                </span>
+            </div>
+            <div class="m-2 md:m-4">
+                <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-200">Buttons</h3>
+                <p class="text-1xl text-slate-800 dark:text-slate-200">Buttons to click on.</p>
+                <div class="m-2 md:m-4 flex flex-wrap md:flex-nowrap justify-evenly items-center">
+                    <div class="sm:col-span-2 px-2 py-auto my-auto text-center">
+                        <button type="submit" class="text-slate-200 bg-emerald-700 hover:bg-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                            Submit
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sm:col-span-2 px-2 py-auto my-auto text-center">
+                        <button type="submit" class="text-slate-200 bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                            Save Draft
+                            <svg class="rtl:rotate-180 w-5 h-5 ms-2" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sm:col-span-2 px-2 py-auto my-auto text-center">
+                        <button type="submit" class="text-slate-200 bg-orange-700 hover:bg-orange-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                            Edit
+                            <svg class="rtl:rotate-180 w-5 h-5 ms-2" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sm:col-span-2 px-2 py-auto my-auto text-center">
+                        <button type="submit" class="text-slate-200 bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                            Delete
+                            <svg class="rtl:rotate-180 w-5 h-5 ms-2" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="m-2 md:m-4">
+                <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-200">Tables</h3>
+                <p class="text-1xl text-slate-800 dark:text-slate-200">Tables are used to show a list of forms.</p>
+                <div class="relative overflow-x-auto shadow-md rounded-lg mt-4 animate-pulse">
+                    <table class="w-full text-sm text-slate-200 dark:text-slate-200">
+                        <thead class="text-xs uppercase bg-slate-200 dark:bg-slate-800 text-slate-200 dark:text-slate-200">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-slate-800 dark:text-slate-200 text-center">
+                                    <div class="h-2 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                                </th>
+                                <th scope="col" class="px-4 py-3 text-center">
+                                    <div class="h-2 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                                </th>
+                                <th scope="col" class="px-4 py-3 text-center">
+                                    <div class="h-2 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                                </th>
+                                <th scope="col" class="px-4 py-3 text-center">
+                                    <div class="h-2 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                                </th>
+                                <th scope="col" class="px-4 py-3 text-center">
+                                    <div class="h-2 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700" id="upcomingMatchTableData">
+                            <tr>
+                                <th colspan="5" scope="row" class="px-4 py-4 font-medium whitespace-nowrap text-slate-800 dark:text-slate-200 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 101" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 me-1.5 animate-spin ml-auto mr-auto text-slate-200 dark:text-slate-800 fill-emerald-700 dark:fill-emerald-400">
+                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                    </svg>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="relative overflow-x-auto shadow-md mt-4">
+                    <table class="w-full text-sm text-slate-200 dark:text-slate-200 rounded-lg">
+                        <thead class="text-xs uppercase bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                            <tr>
+                                <th scope="col" class="px-3 py-3 text-center">
+                                    Match
+                                </th>
+                                <th scope="col" class="px-3 py-3 text-center">
+                                    Team
+                                </th>
+                                <th scope="col" class="px-3 py-3 text-center">
+                                    Station
+                                </th>
+                                <th scope="col" class="px-3 py-3 text-center">
+                                    Status
+                                </th>
+                                <th scope="col" class="px-3 py-3 text-center">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-800 dark:text-slate-200">
+                            <tr class="odd:bg-slate-300 even:bg-slate-200 dark:odd:bg-slate-700 dark:even:bg-slate-800 border-b border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-center">
+                                <td scope="row" class="px-2 py-3 text-center">
+                                    Qual 3
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center">
+                                    4189
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center">
+                                    <div class="inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-slate-800 dark:text-slate-200 bg-red-600 rounded-full">1</div>
+                                </td>
+                                <td scope="col" class="px-0 py-0 text-center">
+                                    <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded border text-yellow-600 border-yellow-600 dark:text-yellow-400 dark:border-yellow-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 0 0-.12-1.03l-2.268-9.64a3.375 3.375 0 0 0-3.285-2.602H7.923a3.375 3.375 0 0 0-3.285 2.602l-2.268 9.64a4.5 4.5 0 0 0-.12 1.03v.228m19.5 0a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3m19.5 0a3 3 0 0 0-3-3H5.25a3 3 0 0 0-3 3m16.5 0h.008v.008h-.008v-.008Zm-3 0h.008v.008h-.008v-.008Z" />
+                                        </svg>
+                                        <div>On Device</div>
+                                    </span>
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center flex justify-evenly">
+                                    <button type="button" class="text-slate-200 bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 transition-transform hover:-rotate-12 active:rotate-12 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                    </svg>
+                                    <span class="sr-only">Edit Form</span>
+                                    <button type="button" class="text-slate-200 bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 transition-transform hover:rotate-12 active:-rotate-12 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                    </svg>
+                                    <span class="sr-only">Delete Form</span>
+                                </td>
+                            </tr>
+                            <tr class="odd:bg-slate-300 even:bg-slate-200 dark:odd:bg-slate-700 dark:even:bg-slate-800 border-b border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-center">
+                                <td scope="row" class="px-3 py-3 text-center">
+                                    Qual 2
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center">
+                                    1771
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center">
+                                    <div class="inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-slate-800 dark:text-slate-200 bg-blue-600 rounded-full">1</div>
+                                </td>
+                                <td scope="col" class="px-0 py-0 text-center">
+                                    <span class="m-2 md:m-4 animate-pulse text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded border text-teal-700 border-teal-700 dark:text-teal-400 dark:border-teal-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 101" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5 animate-spin text-slate-200 dark:text-slate-800 fill-teal-700 dark:fill-teal-400">
+                                            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                        </svg>
+                                        <div>Uploading</div>
+                                    </span>
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center flex justify-evenly">
+                                    <button type="button" class="text-slate-200 bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 transition-transform hover:-rotate-12 active:rotate-12 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                    </svg>
+                                    <span class="sr-only">Edit Form</span>
+                                    <button type="button" class="text-slate-200 bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 transition-transform hover:rotate-12 active:-rotate-12 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                    </svg>
+                                    <span class="sr-only">Delete Form</span>
+                                </td>
+                            </tr>
+                            <tr class="odd:bg-slate-300 even:bg-slate-200 dark:odd:bg-slate-700 dark:even:bg-slate-800 border-b border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-center">
+                                <td scope="row" class="px-3 py-3 text-center">
+                                    Qual 1
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center">
+                                    883
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center">
+                                    <div class="inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-slate-800 dark:text-slate-200 bg-blue-600 rounded-full">1</div>
+                                </td>
+                                <td scope="col" class="px-0 py-0 text-center">
+                                    <span class="m-2 md:m-4 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded border text-sky-700 border-sky-700 dark:text-sky-400 dark:border-sky-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 me-1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+                                        </svg>
+                                        <div>Saved to Cloud</div>
+                                    </span>
+                                </td>
+                                <td scope="col" class="px-3 py-3 text-center flex justify-evenly">
+                                    <button type="button" class="text-slate-200 bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 transition-transform hover:-rotate-12 active:rotate-12 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                                    </svg>
+                                    <span class="sr-only">Edit Form</span>
+                                    <button type="button" class="text-slate-200 bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 transition-transform hover:rotate-12 active:-rotate-12 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                    </svg>
+                                    <span class="sr-only">Delete Form</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="m-2 md:m-4">
+                <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-200">Forms</h3>
+                <div class="flex flex-wrap md:flex-nowrap">
+                    <section class="m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-sky-100 border-sky-100 dark:bg-sky-900 dark:border-sky-900">
+                        <p class="mb-2 text-2xl font-bold py-2 text-slate-800 dark:text-slate-200">Autonomous</p>
+                        <form class="w-full max-w-lg">
+                            <div class="flex flex-wrap -mx-3 mb-6">
+                              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  First Name
+                                </label>
+                                <input type="text" placeholder="Jane" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                                <!--
+                                    border-red-500
+                                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                -->
+                              </div>
+                              <div class="w-full md:w-1/2 px-3">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  Last Name
+                                </label>
+                                <input type="text" placeholder="Doe" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                              </div>
+                            </div>
+                            <div class="flex flex-wrap -mx-3 mb-6">
+                              <div class="w-full px-3">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  Password
+                                </label>
+                                <p class="text-slate-800 dark:text-slate-200 text-xs m-1 italic">Make it as long and as crazy as you'd like</p>
+                                <input type="password" placeholder="******************" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">                              </div>
+                            </div>
+                            <div class="flex flex-wrap -mx-3 mb-2">
+                              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  City
+                                </label>
+                                <input type="text" placeholder="Albuquerque" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                              </div>
+                              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  State
+                                </label>
+                                <div class="relative">
+                                  <select class="block appearance-none w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                                    <option>New Mexico</option>
+                                    <option>Missouri</option>
+                                    <option>Texas</option>
+                                  </select>
+                                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  Zip
+                                </label>
+                                <input type="number" placeholder="90210" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                              </div>
+                            </div>
+                          </form>
+                    </section>
+                    <section class="m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-orange-100 border-orange-100 dark:bg-yellow-800 dark:border-yellow-900">
+                        <p class="mb-2 text-2xl font-bold py-2 text-slate-800 dark:text-slate-200">Teleoperated</p>
+                        <form class="w-full max-w-lg">
+                            <div class="flex flex-wrap -mx-3 mb-6">
+                              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  First Name
+                                </label>
+                                <input type="text" placeholder="Jane" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                                <!--
+                                    border-red-500
+                                    <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                -->
+                              </div>
+                              <div class="w-full md:w-1/2 px-3">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  Last Name
+                                </label>
+                                <input type="text" placeholder="Doe" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                              </div>
+                            </div>
+                            <div class="flex flex-wrap -mx-3 mb-6">
+                              <div class="w-full px-3">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  Password
+                                </label>
+                                <p class="text-slate-800 dark:text-slate-200 text-xs m-1 italic">Make it as long and as crazy as you'd like</p>
+                                <input type="password" placeholder="******************" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                              </div>
+                            </div>
+                            <div class="flex flex-wrap -mx-3 mb-2">
+                              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  City
+                                </label>
+                                <input type="text" placeholder="Albuquerque" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                              </div>
+                              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  State
+                                </label>
+                                <div class="relative">
+                                  <select class="block appearance-none w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                                    <option>New Mexico</option>
+                                    <option>Missouri</option>
+                                    <option>Texas</option>
+                                  </select>
+                                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
+                                  Zip
+                                </label>
+                                <input type="number" placeholder="90210" class="appearance-none block w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
+                              </div>
+                            </div>
+                          </form>
+                    </section>
+                </div>
+            </div>
+            <div class="m-2 md:m-4">
+                <h3 class="text-3xl font-bold text-slate-800 dark:text-slate-200">Graphs</h3>
+                <section class="m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700">
+                    <div class="grid grid-cols-1 mx-auto">
+                        <div class="flex flex-col justify-between px-2 pt-2 leading-normal">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-200">Team 4189</h5>
+                            <p class="mb-3 font-normal text-slate-700 dark:text-slate-300">Rank: 2</p>
+                        </div>
+                        <div class="mx-auto w-full max-w-2xl rounded-lg shadow p-2">
+                            <div class="flex justify-between mb-5">
+                                <div class="grid gap-4 md:grid-cols-4 grid-cols-2 mx-auto">
+                                <div>
+                                    <h5 class="inline-flex items-center text-slate-600 dark:text-slate-400 leading-none font-normal mb-2">Match Points</h5>
+                                    <p class="text-slate-800 dark:text-slate-200 text-2xl leading-none font-bold">3</p>
+                                </div>
+                                <div>
+                                    <h5 class="inline-flex items-center text-slate-600 dark:text-slate-400 leading-none font-normal mb-2">Defenses</h5>
+                                    <p class="text-slate-800 dark:text-slate-200 text-2xl leading-none font-bold">3</p>
+                                </div>
+                                <div>
+                                    <h5 class="inline-flex items-center text-slate-600 dark:text-slate-400 leading-none font-normal mb-2">Boulder</h5>
+                                    <p class="text-slate-800 dark:text-slate-200 text-2xl leading-none font-bold">4</p>
+                                </div>
+                                <div>
+                                    <h5 class="inline-flex items-center text-slate-600 dark:text-slate-400 leading-none font-normal mb-2">Endgame</h5>
+                                    <p class=" text-slate-800 dark:text-slate-200 text-2xl leading-none font-bold">2</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div id="chart-001" class="overflow-visible"></div>
+                            <div class="grid grid-cols-1 items-center border-t border-gray-700 justify-between mt-2.5">
+                        </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <aside>
+        <div id="speedDialArea" class="fixed bottom-6 end-6 group">
+            <div id="speedDialOptions" class="flex flex-col items-center hidden mb-4 space-y-2">
+                <button type="button" class="relative w-[52px] h-[52px] text-slate-500 bg-white rounded-full border border-slate-200 dark:border-slate-600 hover:text-slate-900 shadow-sm dark:hover:text-slate-800 dark:text-slate-200 dark:text-slate-400 hover:bg-slate-50 dark:bg-slate-700 dark:hover:bg-slate-600">
+                    <svg class="w-5 h-5 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+                    </svg>                                   
+                    <span class="absolute block mb-px text-sm font-medium -translate-y-1/2 -start-20 top-1/2">New Issue</span>
+                </button>
+                <button type="button" class="relative w-[52px] h-[52px] text-slate-500 bg-white rounded-full border border-slate-200 dark:border-slate-600 hover:text-slate-900 shadow-sm dark:hover:text-slate-800 dark:text-slate-200 dark:text-slate-400 hover:bg-slate-50 dark:bg-slate-700 dark:hover:bg-slate-600">
+                    <svg class="w-5 h-5 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V18a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V12Z" clip-rule="evenodd" />
+                        <path d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z" />
+                    </svg>                          
+                    <span class="absolute block mb-px text-sm font-medium -translate-y-1/2 -start-20 top-1/2">New Form</span>
+                </button>
+            </div>
+            <button type="button" id="speedDial" class="flex items-center justify-center text-slate-800 dark:text-slate-200 bg-emerald-700 rounded-full w-14 h-14 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-700">
+                <svg id="speedDialAction" class="w-5 h-5 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                </svg>
+                <span class="sr-only">Open actions menu</span>
+            </button>
+        </div>
+    </aside>
+    <script>
+        let darkModeGraph = 'dark';
+    </script>
+    <script src="../js/overlays.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="../js/components.js"></script>
+</body>
 </html>

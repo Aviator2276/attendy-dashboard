@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+svg.apexcharts-svg {
+    background-color: transparent !important;
+    overflow: visible;
+  }
+  
+  .chart-container {
+    padding: 2rem;
+    padding-right: 2.7rem;
+  }
+/*
+  .apexcharts-tooltip.apexcharts-theme-dark, .apexcharts-tooltip, .apexcharts-tooltip-series-group, .apexcharts-xaxistooltip-bottom {
+    background: #111827 !important;
+    color: white !important;
+    white-space: pre-wrap !important; 
+  }
+*/
