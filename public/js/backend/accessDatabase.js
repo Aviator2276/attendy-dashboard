@@ -1,9 +1,7 @@
-const fs = require('fs');
 const csv = require('csv-parser');
 const needle = require('needle');
 const urlDatabase =
-  'https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1';
-const database = './src/db/data.csv';
+  'https://docs.google.com/spreadsheets/d/17bVQrYdBmNAH0in2mje04Gm61WxEfq26JoAiRIB6Orw/edit?usp=sharing';
 let online = true;
 
 export function getConnectionState() {
