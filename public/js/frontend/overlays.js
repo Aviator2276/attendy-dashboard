@@ -73,7 +73,7 @@ function minimizeNavbar() {
     element.classList.add('hidden');
   }
   navbarQuickAction.classList.remove('mb-2');
-  navbarQuickAction.classList.add('mb-28');
+  navbarQuickAction.classList.add('mb-14');
 }
 
 function maximizeNavbar() {
@@ -89,7 +89,7 @@ function maximizeNavbar() {
     }
   }, 70);
   navbarQuickAction.classList.add('mb-2');
-  navbarQuickAction.classList.remove('mb-28');
+  navbarQuickAction.classList.remove('mb-14');
 }
 
 function minimizeNavbarMobile() {
