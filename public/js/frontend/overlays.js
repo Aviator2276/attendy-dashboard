@@ -1,9 +1,5 @@
 const mainContent = document.getElementById('mainContent');
 
-const speedDial = document.getElementById('speedDial');
-const speedDialOptions = document.getElementById('speedDialOptions');
-const speedDialArea = document.getElementById('speedDialArea');
-const speedDialAction = document.getElementById('speedDialAction');
 const navbar = document.getElementById('navbar');
 const navbarText = document.getElementsByClassName('navbar-text');
 const navbarMinimize = document.getElementById('navbarMinimize');
@@ -66,24 +62,6 @@ function changeToLight() {
   localStorage.setItem('color-theme', 'dark');
   darkModeGraph = 'light';
 }
-
-speedDial.addEventListener('click', () => {
-  if (speedDialOptions.classList.contains('hidden')) {
-    speedDialOptions.classList.remove('hidden');
-    speedDialAction.classList.add('rotate-45');
-  } else {
-    speedDialOptions.classList.add('hidden');
-    speedDialAction.classList.remove('rotate-45');
-  }
-});
-speedDialArea.addEventListener('mouseover', () => {
-  speedDialOptions.classList.remove('hidden');
-  speedDialAction.classList.add('rotate-45');
-});
-speedDialArea.addEventListener('mouseout', () => {
-  speedDialOptions.classList.add('hidden');
-  speedDialAction.classList.remove('rotate-45');
-});
 
 function minimizeNavbar() {
   navbarArrow.classList.remove('-scale-100');
