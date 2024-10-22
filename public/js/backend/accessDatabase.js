@@ -1,9 +1,5 @@
-const csv = require('csv-parser');
-const needle = require('needle');
-const urlDatabase =
-  'https://docs.google.com/spreadsheets/d/17bVQrYdBmNAH0in2mje04Gm61WxEfq26JoAiRIB6Orw/edit?usp=sharing';
-let online = true;
-
+const databaseURL = './api/v1/attendance';
+/*
 export function getConnectionState() {
   return window.navigator.onLine;
 }
@@ -35,4 +31,36 @@ export async function getDatabase() {
   } else {
     console.log('Unable to Connect.');
   }
+}
+*/
+export async function getData2() {
+  try {
+    const response = await fetch(databaseURL);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data)
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export function getData() {
+  const requestData = new Promise(async (res, rej) => {
+    try {
+      const response = await fetch(databaseURL);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const data = response.json();
+      //console.log(data);
+      res(data);
+    } catch (error) {
+      rej(error);
+    }
+  });
+  return requestData;
 }
