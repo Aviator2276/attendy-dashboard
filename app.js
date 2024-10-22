@@ -6,6 +6,8 @@ const rateLimiter = require('express-rate-limit');
 const path = require('path');
 const app = express();
 
+const attendanceAPI = require('./routes/attendance');
+
 /*
 app.use(
   rateLimiter({
@@ -26,6 +28,8 @@ app.use(
     },
   })
 );
+
+app.use('/api/v1/attendance', attendanceAPI);
 
 app.use(express.static('./public'));
 app.use(express.json());
