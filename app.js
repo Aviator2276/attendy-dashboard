@@ -17,6 +17,7 @@ app.use(
   })
 );*/
 //app.use(cors); //Add in production
+//
 app.use(
   helmet({
     contentSecurityPolicy: {
