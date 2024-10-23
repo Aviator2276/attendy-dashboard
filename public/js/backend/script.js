@@ -13,3 +13,12 @@ export const main = () => {
 export const numMembers = (day, data) => {
     console.log(data[day])
 }
+export const datesAttended = (user,data) => {
+    for(date in data){
+        for(username in data){
+            if (data[date][username] == user){
+                
+            }
+        }
+    }
+}
