@@ -17,7 +17,7 @@ app.use(
   })
 );*/
 //app.use(cors); //Add in production
-//
+/*
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -28,6 +28,7 @@ app.use(
     },
   })
 );
+*/
 
 app.use('/api/v1/attendance', attendanceAPI);
 
