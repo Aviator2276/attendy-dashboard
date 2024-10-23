@@ -13,12 +13,18 @@ export const main = () => {
 export const numMembers = (day, data) => {
     console.log(data[day])
 }
-export const datesAttended = (user,data) => {
-    for(date in data){
-        for(username in data){
-            if (data[date][username] == user){
-                
+
+export const datesAttended = (user) => {
+    const times=[]
+    const promise = getData();
+    promise.then((data) => {
+            for(let i in data){
+                let dataObject = data[i];
+                if(dataObject[0]==user){//0 is the email index
+                    times[times.length] = dataObject[1];
+                }
             }
         }
-    }
+    )
+    return times;
 }
