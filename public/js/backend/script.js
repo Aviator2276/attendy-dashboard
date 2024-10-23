@@ -5,18 +5,15 @@ export const main = () => {
   const promise = getData();
   promise.then((input_data) => {
     data = input_data;
-    //console.log(data)
 
-    //console.log(numMembers('8/21/2024', data));
-    //console.log(getDates(data))
-    //console.log(getDates())
     console.log(data)
+    console.log()
     console.log(getNumMembersList());
     console.log(datesAttended('ahneilson08@jeffcityschools.org'));
   });
 };
 
-export const numMembers = (date) => {
+export const getNumMembers = (date) => {
   let count = 0;
   for (let i in data) {
     if (data[i][1] == date) {
@@ -25,6 +22,15 @@ export const numMembers = (date) => {
   }
   return count;
 };
+export const getMembers = (date) => {
+    let members = [];
+    for (let i in data) {
+      if (data[i][1] == date) {
+        members.push(data[i][0])
+      }
+    }
+    return members;
+}
 
 export const getDates = () => {
   const dates = [];
@@ -48,14 +54,13 @@ export const getNumMembersList = () => {
 };
 
 export const datesAttended = (user) => {
-  const times = [];
+  const dates = [];
 
   for (let i in data) {
-    let dataObject = data[i];
-    if (dataObject[0] == user) {
-      times.push(dataObject[1]);
+    if (data[i][0] == user) {
+      dates.push(data[i][1]);
     }
   }
 
-  return times;
+  return dates;
 };
