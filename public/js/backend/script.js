@@ -12,3 +12,13 @@ export const main = () => {
 
     })
 };
+
+export const datesAttended = (user,data) => {
+    for(date in data){
+        for(username in data){
+            if (data[date][username] == user){
+                
+            }
+        }
+    }
+}
