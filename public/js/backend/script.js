@@ -7,11 +7,24 @@ export const main = () => {
     data = input_data;
 
     console.log(data)
-    console.log()
     console.log(getNumMembersList());
     console.log(datesAttended('ahneilson08@jeffcityschools.org'));
+    console.log(getNumDatesList());
+    
   });
 };
+
+
+
+export const getNumDatesList = (user) => {
+    let count = 0;
+    for (let i in data) {
+        if (data[i][0] == user) {
+            count++;
+        }
+    }
+    return count;
+}
 
 export const getNumMembers = (date) => {
   let count = 0;
@@ -22,6 +35,7 @@ export const getNumMembers = (date) => {
   }
   return count;
 };
+
 export const getMembers = (date) => {
     let members = [];
     for (let i in data) {
