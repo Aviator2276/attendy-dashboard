@@ -20,7 +20,7 @@ const navbar = document.getElementById('navbar');
 const root = document.getElementById('mainContent');
 
 export const main = () => {
-  //backendMain();
+  backendMain();
   console.log(localStorage.getItem('page'));
   changePage(localStorage.getItem('page'));
 };
