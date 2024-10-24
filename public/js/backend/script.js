@@ -7,16 +7,18 @@ export const backendMain = () => {
   promise.then((input_data) => {
     data = input_data;
 
-    /*
-    let dateOrganized = new DateOrganized();
-    console.log(dateOrganized);
-    let memberOrganized = new MemberOrganized();
-    console.log(memberOrganized);
+    //let dateOrganized = new DateOrganized();
+    console.log(getDatesJSON());
+    //let memberOrganized = new MemberOrganized();
+    console.log(getMembersJSON());
 
-    console.log(getTop5Attendees());
-    console.log(getTop5Meetings());
-    */
-    console.log(getMeetingsMembersAttended());
+    //console.log(getTop5Attendees());
+    //console.log(getTop5Meetings());
+
+    //console.log(getMeetingsMembersAttended());
+
+    console.log(getDateChartData());
+    console.log(getMemberChartData());
   });
 };
 
@@ -105,7 +107,7 @@ export const getDatesJSON = () => {
   for (let date of allDates) {
     dates[date] = new Date(date);
   }
-}
+};
 
 export const getMembersJSON = () => {
   let allMembers = getAllMembers();
@@ -213,6 +215,49 @@ export const getMeetingsMembersAttended = () => {
 }
 */
 
-export const chartData = () => {
-  dates;
+export const getDateChartData = () => {
+  let dates = getAllDates().map((date) => {
+    return new Date(date);
+  });
+  let dateList = [];
+  let presentList = [];
+  let absentList = [];
+  let percentAttendingList = [];
+
+  for (let date of dates) {
+    dateList.push(date.date);
+    presentList.push(date.presentMembers.length);
+    absentList.push(date.absentMembers.length);
+    percentAttendingList.push(date.percentMembersAttended);
+  }
+
+  return {
+    date: dateList,
+    membersPresent: presentList,
+    membersAbsent: absentList,
+    percentMembersAttending: percentAttendingList,
+  };
+};
+
+export const getMemberChartData = () => {
+  let members = getAllMembers().map((member) => {
+    return new Member(member);
+  });
+  let memberList = [];
+  let datesPresentList = [];
+  let datesAbsentList = [];
+  let percentAttendedList = [];
+  for (let member of members) {
+    memberList.push(member.member);
+    datesPresentList.push(member.datesPresent.length);
+    datesAbsentList.push(member.datesAbsent.length);
+    percentAttendedList.push(member.percentDatesAttended);
+  }
+
+  return {
+    member: memberList,
+    datesPresent: datesPresentList,
+    datesAbsent: datesAbsentList,
+    percentDatesAttended: percentAttendedList,
+  };
 };
