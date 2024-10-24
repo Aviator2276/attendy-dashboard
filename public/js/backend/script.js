@@ -25,6 +25,8 @@ export const backendMain = () => {
     console.log(getNumAttendancesObject());
     console.log('getNumAttendances');
     console.log(getNumAttendances('cvang07@jeffcityschools.org'));
+    console.log("getDatesPersonAttended")
+    console.log(getDatesPersonAttended('jsfarley07@jeffcityschools.org'))
   });
 };
 
@@ -99,7 +101,7 @@ export const getTop5Meetings = () => {
 //get percent attended
 export const getPercentAttended = (date) => {
   const numMembers = getNumMembers()
-  const get
+  //const get
 }
 
 //get average attendence
@@ -162,3 +164,15 @@ export const getNumAttendancesObject = () => {
   }
   return numDatesList;
 };
+
+export const getDatesPersonAttended = (member) => {
+  let dates = [];
+  for (let i in data){
+    let selectedData = data[i]
+    if(selectedData[0] == member){
+      console.log(selectedData[1])
+      dates.push(selectedData[1]);
+    }
+  }
+  return dates;
+}
