@@ -229,3 +229,16 @@ avg % of users attending per date
 
 
 */
+export const getMeetingsMebersAttended = () =>{
+  let dates = getAllDates();
+  let meetingData = {}
+  for(let data in dates){
+    meetingData[dates[data]] = [];
+  }
+  for(let i in data){
+    let selectedData = data[i]
+    console.log(selectedData)
+    meetingData[selectedData[1]].push(selectedData[0])
+  }
+  return meetingData;
+}
