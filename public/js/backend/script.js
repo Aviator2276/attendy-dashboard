@@ -7,6 +7,7 @@ export const backendMain = () => {
   promise.then((input_data) => {
     data = input_data;
 
+    /*
     let dateOrganized = new DateOrganized();
     console.log(dateOrganized);
     let memberOrganized = new MemberOrganized();
@@ -14,6 +15,8 @@ export const backendMain = () => {
 
     console.log(getTop5Attendees());
     console.log(getTop5Meetings());
+    */
+    console.log(getMeetingsMembersAttended());
   });
 };
 
@@ -95,42 +98,23 @@ export const getMembersAbsent = (member) => {
   return membersAbsent;
 };
 
-class DateOrganized {
-  constructor() {
-    let allDates = getAllDates();
-    this.dates = {};
+export const getDatesJSON = () => {
+  let allDates = getAllDates();
+  let dates = {};
 
-    for (let date of allDates) {
-      this.dates[date] = new Date(date);
-    }
-  }
-
-  getDates(sortType = 'numerical', reversed = false) {
-    output = this.dates.toSorted((date) => {
-      if (sortType == 'numerical') {
-        return date.date;
-      }
-      if (sortType == 'attendance') {
-        return date.percentMembersAttended;
-      }
-      return 'Error: invalid type';
-    });
-    if (reversed) {
-      output.reverse();
-    }
-    return output;
+  for (let date of allDates) {
+    dates[date] = new Date(date);
   }
 }
 
-class MemberOrganized {
-  constructor() {
-    let allMembers = getAllMembers();
-    this.members = {};
-    for (let member of allMembers) {
-      this.members[member] = new Member(member);
-    }
+export const getMembersJSON = () => {
+  let allMembers = getAllMembers();
+  let members = {};
+  for (let member of allMembers) {
+    members[member] = new Member(member);
   }
-}
+  return members;
+};
 
 class Date {
   constructor(date) {
@@ -213,7 +197,8 @@ avg % of users attending per date
 
 
 */
-export const getMeetingsMebersAttended = () =>{
+/*
+export const getMeetingsMembersAttended = () => {
   let dates = getAllDates();
   let meetingData = {}
   for(let data in dates){
@@ -226,3 +211,8 @@ export const getMeetingsMebersAttended = () =>{
   }
   return meetingData;
 }
+*/
+
+export const chartData = () => {
+  dates;
+};
