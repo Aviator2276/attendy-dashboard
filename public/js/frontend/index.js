@@ -1,4 +1,4 @@
-import { backendMain, datesAttended } from '../backend/script.js';
+import { backendMain, getDatesAttended } from '../backend/script.js';
 
 import { displayOverlays } from './sidebar.js';
 import { navbarDisplay } from './componenets/navbar.js';
