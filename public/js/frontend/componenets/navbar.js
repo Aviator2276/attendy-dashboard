@@ -1,5 +1,4 @@
 export const navbarDisplay = (page) => {
-  console.log('running');
   return `
     <div
           class="h-full overflow-y-hidden px-2 py-4 bg-emerald-700 flex flex-col"
@@ -8,7 +7,7 @@ export const navbarDisplay = (page) => {
             <li>
               <a
                 id="homeLink"
-                href="#"
+                role="button"
                 class="flex items-center rounded-lg p-2 text-slate-200 ${
                   page === 'home' ? 'bg-emerald-800' : 'hover:bg-emerald-600'
                 }"
@@ -38,7 +37,7 @@ export const navbarDisplay = (page) => {
             <li>
               <a
                 id="classLink"
-                href="#"
+                role="button"
                 class="flex items-center rounded-lg p-2 text-slate-200 ${
                   page === 'class' ? 'bg-emerald-800' : 'hover:bg-emerald-600'
                 }"
@@ -69,7 +68,7 @@ export const navbarDisplay = (page) => {
             <li>
               <a
                 id="peopleLink"
-                href="#"
+                role="button"
                 class="flex items-center rounded-lg p-2  text-slate-200 ${
                   page === 'people' ? 'bg-emerald-800' : 'hover:bg-emerald-600'
                 }"

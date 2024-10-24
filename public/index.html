@@ -45,17 +45,10 @@
         class="ml-0 md:ml-52 2xl:ml-0 transition-transform"
       ></main>
     </div>
-    <script>
-      let darkModeGraph = 'dark';
-    </script>
-    <script type="module">
-      import { frontendMain } from './js/frontend/index.js';
-      frontendMain();
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script type="module">
-      import { main, datesAttended } from './js/backend/script.js';
-      //main();
+      import { main } from './js/frontend/index.js';
+      main();
     </script>
   </body>
 </html>

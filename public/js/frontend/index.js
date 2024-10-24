@@ -1,3 +1,5 @@
+import { backendMain, datesAttended } from '../backend/script.js';
+
 import { displayOverlays } from './sidebar.js';
 import { navbarDisplay } from './componenets/navbar.js';
 import { homeView } from './componenets/home.js';
@@ -7,7 +9,8 @@ import { peopleView } from './componenets/people.js';
 const navbar = document.getElementById('navbar');
 const root = document.getElementById('mainContent');
 
-export const frontendMain = () => {
+export const Main = () => {
+  backendMain();
   changePage(localStorage.getItem('page'));
 };
 

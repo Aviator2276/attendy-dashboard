@@ -28,11 +28,9 @@ export const displayOverlays = () => {
     (!('color-theme' in localStorage) &&
       window.matchMedia('(prefers-color-scheme: dark)').matches)
   ) {
-    darkModeGraph = 'dark';
     darkModeIcon.innerHTML = sunIcon;
     darkModeIcon.classList.add('rotate-90');
   } else {
-    darkModeGraph = 'light';
     darkModeIcon.innerHTML = moonIcon;
   }
 
@@ -58,7 +56,6 @@ export const displayOverlays = () => {
 
     document.documentElement.classList.remove('dark');
     localStorage.setItem('color-theme', 'light');
-    darkModeGraph = 'dark';
   }
 
   function changeToLight() {
@@ -67,7 +64,6 @@ export const displayOverlays = () => {
 
     document.documentElement.classList.add('dark');
     localStorage.setItem('color-theme', 'dark');
-    darkModeGraph = 'light';
   }
 
   function minimizeNavbar() {
