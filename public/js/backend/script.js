@@ -106,14 +106,16 @@ export const getMembersPresent = (date) => {
 
 //input: date
 //output: get a list of members that attended
-export const getMembersAbsent = (date) => {
-  let members = [];
-  for (let i in data) {
-    if (data[i][1] == date) {
-      members.push(data[i][0]);
+export const getMembersAbsent = (member) => {
+  const membersPresent = getMembersPresent(member);
+  const allMembers = getAllMembers();
+  const membersAbsent = [];
+  for (let member of allMembers) {
+    if (!membersPresent.includes(member)) {
+      membersAbsent.push(member);
     }
   }
-  return members;
+  return membersAbsent;
 };
 
 //input: none
@@ -183,7 +185,7 @@ class Date {
     console.log(date)
     this.presentMembers = getMembersPresent(date);
     this.absentMembers = getMembersAbsent(date);
-    this.percentMembersAttended = this.presentMembers.length / (this.presentMembers.length + this.absentMembers).length;
+    this.percentMembersAttended = this.presentMembers.length / (this.presentMembers.length + this.absentMembers.length);
   }
 }
 class Member {
