@@ -9,7 +9,7 @@ import { peopleView } from './componenets/people.js';
 const navbar = document.getElementById('navbar');
 const root = document.getElementById('mainContent');
 
-export const Main = () => {
+export const main = () => {
   backendMain();
   changePage(localStorage.getItem('page'));
 };
