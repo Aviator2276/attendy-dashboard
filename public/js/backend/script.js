@@ -1,6 +1,7 @@
 import { getData } from './accessDatabase.js';
 let data = null;
 
+//MAIN
 export const backendMain = () => {
   const promise = getData();
   promise.then((input_data) => {
@@ -10,11 +11,13 @@ export const backendMain = () => {
     console.log(dateOrganized);
     let memberOrganized = new MemberOrganized();
     console.log(memberOrganized);
+
+    console.log(getTop5Attendees());
+    console.log(getTop5Meetings());
   });
 };
 
-//input: none
-//output: list of all people
+//GET ALL MEMBERS
 export const getAllMembers = () => {
   const members = [];
 
@@ -26,8 +29,7 @@ export const getAllMembers = () => {
   return members;
 };
 
-//input: none
-//list of all dates
+//GET ALL DATES
 export const getAllDates = () => {
   const dates = [];
 
@@ -38,7 +40,6 @@ export const getAllDates = () => {
   }
   return dates;
 };
-
 
 //input: member
 //output: list of dates attended by that member
@@ -68,30 +69,6 @@ export const getDatesNotAttended = (member) => {
   return datesNotAttended;
 };
 
-//input: none
-//output: the top 5 members who've attended the most meetings
-export const getTop5Attendees = () => {
-  const members = getAllMembers();
-  members.sort(getNumAttendances);
-  return members.slice(0, 5);
-};
-
-//input: none
-//output: the top 5 meetings that have been attended by the most members.
-export const getTop5Meetings = () => {
-  const dates = getAllDates();
-  dates.sort(getNumMembers);
-  return dates.slice(0, 5);
-};
-
-//input: date
-//output: percentage of members that attended
-export const getPercentAttended = (date) => {
-  const numMembersPresent = getMembersPresent(date).length
-  const numAllMembers = getAllMembers(date).length
-  return numMembersPresent / numAllMembers;
-}
-
 //input: date
 //output: get a list of members that attended
 export const getMembersPresent = (date) => {
@@ -118,48 +95,7 @@ export const getMembersAbsent = (member) => {
   return membersAbsent;
 };
 
-//input: none
-//output: JSON.
-//    keys = dates
-//    values = # of members attended
-export const getNumMembersObject = () => {
-  let dates = getAllDates();
-  let numMembersList = {};
-
-  for (let date of dates) {
-    numMembersList[date] = getNumMembers(date);
-  }
-  return numMembersList;
-};
-
-//input: none
-//output: JSON
-//    keys = members
-//    values = # of meetings attended
-//Get a dictionary-like object. keys = members, values = # of meetings attended
-export const getNumAttendancesObject = () => {
-  let members = getAllMembers();
-  let numDatesList = {};
-
-  for (let member of members) {
-    numDatesList[member] = getNumAttendances(member);
-  }
-  return numDatesList;
-};
-
-/*
-export const DateOrganized = () => {
-  for (let date of getAllDates()) {
-    let dateInfo = {};
-    dateInfo["membersPresent"] = getMembers(date);
-    dateInfo["membersAbsent"] = get
-
-    orderedByDateJSON[date] = dateInfo;
-  }
-}*/
-
 class DateOrganized {
-
   constructor() {
     let allDates = getAllDates();
     this.dates = {};
@@ -167,6 +103,22 @@ class DateOrganized {
     for (let date of allDates) {
       this.dates[date] = new Date(date);
     }
+  }
+
+  getDates(sortType = 'numerical', reversed = false) {
+    output = this.dates.toSorted((date) => {
+      if (sortType == 'numerical') {
+        return date.date;
+      }
+      if (sortType == 'attendance') {
+        return date.percentMembersAttended;
+      }
+      return 'Error: invalid type';
+    });
+    if (reversed) {
+      output.reverse();
+    }
+    return output;
   }
 }
 
@@ -182,20 +134,52 @@ class MemberOrganized {
 
 class Date {
   constructor(date) {
-    console.log(date)
+    this.date = date;
     this.presentMembers = getMembersPresent(date);
     this.absentMembers = getMembersAbsent(date);
-    this.percentMembersAttended = this.presentMembers.length / (this.presentMembers.length + this.absentMembers.length);
+    this.percentMembersAttended =
+      this.presentMembers.length /
+      (this.presentMembers.length + this.absentMembers.length);
   }
 }
 class Member {
   constructor(member) {
-    console.log(member)
+    this.member = member;
     this.datesPresent = getDatesAttended(member);
     this.datesAbsent = getDatesNotAttended(member);
-    this.percentDatesAttended = this.datesPresent.length / (this.datesPresent.length + this.datesAbsent.length);
+    this.percentDatesAttended =
+      this.datesPresent.length /
+      (this.datesPresent.length + this.datesAbsent.length);
   }
 }
+
+//input: none
+//output: the top 5 members who've attended the most meetings
+export const getTop5Attendees = () => {
+  let members = getAllMembers();
+  members.sort((member1, member2) => {
+    return getDatesAttended(member2).length - getDatesAttended(member1).length;
+  });
+  members = members.map((member) => {
+    return new Member(member);
+  });
+  //members = members.slice(0, 5);
+  return members;
+};
+
+//input: none
+//output: the top 5 meetings that have been attended by the most members.
+export const getTop5Meetings = () => {
+  let dates = getAllDates();
+  dates.sort((date1, date2) => {
+    return getMembersPresent(date2).length - getMembersPresent(date1).length;
+  });
+  dates = dates.map((date) => {
+    return new Date(date);
+  });
+  //dates = dates.slice(0, 5);
+  return dates.slice(0, 5);
+};
 
 /*
 JSON formats
