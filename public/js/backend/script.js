@@ -1,12 +1,13 @@
 import { getData } from './accessDatabase.js';
 let data = null;
 
-export const main = () => {
+export const backendMain = () => {
   const promise = getData();
   promise.then((input_data) => {
     data = input_data;
 
-    console.log(data)
+    console.log(data);
+    console.log();
     console.log(getNumMembersList());
     console.log(datesAttended('ahneilson08@jeffcityschools.org'));
     console.log(getNumDatesList());
@@ -37,14 +38,14 @@ export const getNumMembers = (date) => {
 };
 
 export const getMembers = (date) => {
-    let members = [];
-    for (let i in data) {
-      if (data[i][1] == date) {
-        members.push(data[i][0])
-      }
+  let members = [];
+  for (let i in data) {
+    if (data[i][1] == date) {
+      members.push(data[i][0]);
     }
-    return members;
-}
+  }
+  return members;
+};
 
 export const getDates = () => {
   const dates = [];

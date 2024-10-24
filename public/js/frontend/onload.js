@@ -7,3 +7,5 @@ if (
 } else {
   document.documentElement.classList.remove('dark');
 }
+
+localStorage.setItem('page', 'home');
