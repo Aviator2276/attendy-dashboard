@@ -14,34 +14,31 @@ import {
   loadClassTheme,
   updateClassTheme,
 } from './componenets/class.js';
-import { studentView } from './componenets/student.js';
+import {
+  studentView,
+  offloadStudent,
+  loadStudentTheme,
+  updateStudentTheme,
+} from './componenets/student.js';
 
 const navbar = document.getElementById('navbar');
 const root = document.getElementById('mainContent');
 
 export const main = () => {
   backendMain();
-  console.log(localStorage.getItem('page'));
   changePage(localStorage.getItem('page'));
 };
 
 export const changePage = (page) => {
-  console.log(page);
   if (page === 'home') {
     navbar.innerHTML = navbarDisplay(page);
     changeToHome();
-    setTimeout(() => {
-      loadHomeTheme();
-    }, 10);
-  } else if (page === 'student') {
-    navbar.innerHTML = navbarDisplay(page);
-    changeTostudent();
   } else if (page === 'class') {
     navbar.innerHTML = navbarDisplay(page);
     changeToClass();
-    setTimeout(() => {
-      loadClassTheme();
-    }, 10);
+  } else if (page === 'student') {
+    navbar.innerHTML = navbarDisplay(page);
+    changeTostudent();
   }
   localStorage.setItem('page', page);
   displayOverlays();
@@ -50,10 +47,18 @@ export const changePage = (page) => {
 const changeToHome = () => {
   root.innerHTML = homeView();
   offloadClass();
+  offloadStudent();
+  setTimeout(() => {
+    loadHomeTheme();
+  }, 10);
 };
 const changeToClass = () => {
   root.innerHTML = classView();
   offloadHome();
+  offloadStudent();
+  setTimeout(() => {
+    loadClassTheme();
+  }, 10);
 };
 const changeTostudent = () => {
   root.innerHTML = studentView();
@@ -64,4 +69,5 @@ const changeTostudent = () => {
 export const updateTheme = () => {
   updateHomeTheme();
   updateClassTheme();
+  updateStudentTheme();
 };

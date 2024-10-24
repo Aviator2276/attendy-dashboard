@@ -1,6 +1,6 @@
 import { graph, updateChart, deleteChart } from './line-chart.js';
 
-const homeLineGraph = 'homeLineGraph';
+const homeLineGraphID = 'homeLineGraph';
 
 export const homeView = () => {
   return homeHeader() + homeContent();
@@ -36,12 +36,12 @@ const chartContainer = () => {
   <section
     class="h-80 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
     >
-    ${graph(homeLineGraph, homeLineGraphOptions)}
+    ${graph(homeLineGraphID, homeLineGraphOptions)}
   </section>`;
 };
 
 export const loadHomeTheme = () => {
-  updateChart(homeLineGraph, {
+  updateChart(homeLineGraphID, {
     theme: {
       mode: localStorage.getItem('color-theme'),
       palette: 'palette1',
@@ -50,7 +50,7 @@ export const loadHomeTheme = () => {
 };
 
 export const updateHomeTheme = () => {
-  updateChart(homeLineGraph, {
+  updateChart(homeLineGraphID, {
     theme: {
       mode: localStorage.getItem('color-theme') === 'light' ? 'dark' : 'light',
       palette: 'palette1',
@@ -59,7 +59,7 @@ export const updateHomeTheme = () => {
 };
 
 export const offloadHome = () => {
-  deleteChart(homeLineGraph);
+  deleteChart(homeLineGraphID);
 };
 
 const homeLineGraphOptions = {
