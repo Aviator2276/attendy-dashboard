@@ -67,10 +67,10 @@ export const navbarDisplay = (page) => {
             </li>
             <li>
               <a
-                id="peopleLink"
+                id="studentLink"
                 role="button"
                 class="flex items-center rounded-lg p-2  text-slate-200 ${
-                  page === 'people' ? 'bg-emerald-800' : 'hover:bg-emerald-600'
+                  page === 'student' ? 'bg-emerald-800' : 'hover:bg-emerald-600'
                 }"
               >
                 <svg
@@ -80,7 +80,7 @@ export const navbarDisplay = (page) => {
                   stroke-width="1.25"
                   stroke="currentColor"
                   class="h-8 w-8 transition duration-75 text-slate-300 ${
-                    page === 'people' ? '' : 'group-hover:text-slate-100'
+                    page === 'student' ? '' : 'group-hover:text-slate-100'
                   }"
                 >
                   <path
@@ -92,7 +92,7 @@ export const navbarDisplay = (page) => {
 
                 <span
                   class="flex-1 ms-4 whitespace-nowrap navbar-text transition-all"
-                  >People</span
+                  >Student</span
                 >
               </a>
             </li>
