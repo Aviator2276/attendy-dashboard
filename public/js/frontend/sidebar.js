@@ -1,4 +1,4 @@
-import { changePage } from './index.js';
+import { changePage, updateTheme } from './index.js';
 
 export const displayOverlays = () => {
   const mainContent = document.getElementById('mainContent');
@@ -12,7 +12,7 @@ export const displayOverlays = () => {
 
   const homeLink = document.getElementById('homeLink');
   const classLink = document.getElementById('classLink');
-  const peopleLink = document.getElementById('peopleLink');
+  const studentLink = document.getElementById('studentLink');
 
   const darkModeSwitch = document.getElementById('darkModeSwitch');
   const darkModeIcon = document.getElementById('darkModeIcon');
@@ -51,6 +51,7 @@ export const displayOverlays = () => {
   });
 
   function changeToDark() {
+    updateTheme();
     darkModeIcon.innerHTML = moonIcon;
     darkModeIcon.classList.remove('rotate-90');
 
@@ -59,6 +60,7 @@ export const displayOverlays = () => {
   }
 
   function changeToLight() {
+    updateTheme();
     darkModeIcon.innerHTML = sunIcon;
     darkModeIcon.classList.add('rotate-90');
 
@@ -154,7 +156,7 @@ export const displayOverlays = () => {
   classLink.addEventListener('click', () => {
     changePage('class');
   });
-  peopleLink.addEventListener('click', () => {
-    changePage('people');
+  studentLink.addEventListener('click', () => {
+    changePage('student');
   });
 };

@@ -1,8 +1,8 @@
-export const peopleView = () => {
-  return peopleHeader() + peopleContent();
+export const studentView = () => {
+  return studentHeader() + studentContent();
 };
 
-const peopleHeader = () => {
+const studentHeader = () => {
   return `
     <header class="shadow">
         <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
@@ -12,14 +12,14 @@ const peopleHeader = () => {
             Welcome, Admin
         </h1>
         <p class="m-2 md:m-4 text-1xl text-slate-800 dark:text-slate-200">
-            People Page
+            student Page
         </p>
         </div>
     </header>
     `;
 };
 
-const peopleContent = () => {
+const studentContent = () => {
   return `
     <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
     <section

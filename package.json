@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon node app.js",
-    "css": "npx tailwindcss -i ./public/css/index.css -o ./public/css/index-tailwind.css"
+    "start": "concurrently \"nodemon node app.js\" \"npm run css\"",
+    "css": "npx tailwindcss -i ./public/css/index.css -o ./public/css/index-tailwind.css --watch"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "needle": "^3.3.1"
   },
   "devDependencies": {
+    "concurrently": "^9.0.1",
     "nodemon": "^3.1.7",
     "tailwindcss": "^3.4.14"
   }

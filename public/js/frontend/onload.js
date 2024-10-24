@@ -8,4 +8,6 @@ if (
   document.documentElement.classList.remove('dark');
 }
 
-localStorage.setItem('page', 'home');
+if (localStorage.getItem('page') === null) {
+  localStorage.setItem('page', 'home');
+}
