@@ -6,29 +6,15 @@ export const backendMain = () => {
   promise.then((input_data) => {
     data = input_data;
 
-    console.log(data);
-    console.log("getAllMembers")
-    console.log(getAllMembers());
-    console.log('getAllDates');
-    console.log(getAllDates());
-    console.log('getDatesAttended');
-    console.log(getDatesAttended('cvang07@jeffcityschools.org'));
-    console.log('getDatesNotAttended');
-    console.log(getDatesNotAttended('cvang07@jeffcityschools.org'));
-    console.log('getTop5Attendees');
-    console.log(getTop5Attendees());
-    console.log('getTop5Meetings');
-    console.log(getTop5Meetings())
-    console.log('getNumMembersObject');
-    console.log(getNumMembersObject());
-    console.log('getNumAttendancesObject');
-    console.log(getNumAttendancesObject());
-    console.log('getNumAttendances');
-    console.log(getNumAttendances('cvang07@jeffcityschools.org'));
+    let dateOrganized = new DateOrganized();
+    console.log(dateOrganized);
+    let memberOrganized = new MemberOrganized();
+    console.log(memberOrganized);
   });
 };
 
-//get all people
+//input: none
+//output: list of all people
 export const getAllMembers = () => {
   const members = [];
 
@@ -40,7 +26,8 @@ export const getAllMembers = () => {
   return members;
 };
 
-//get all dates
+//input: none
+//list of all dates
 export const getAllDates = () => {
   const dates = [];
 
@@ -52,14 +39,14 @@ export const getAllDates = () => {
   return dates;
 };
 
-//return date with # people attended & # not attended JSON format
 
-//get all dates of a certain person attended
-export const getDatesAttended = (user) => {
+//input: member
+//output: list of dates attended by that member
+export const getDatesAttended = (member) => {
   const dates = [];
 
   for (let i in data) {
-    if (data[i][0] == user) {
+    if (data[i][0] == member) {
       dates.push(data[i][1]);
     }
   }
@@ -67,9 +54,10 @@ export const getDatesAttended = (user) => {
   return dates;
 };
 
-//get all dates of a certain person not attended
-export const getDatesNotAttended = (user) => {
-  const datesAttended = getDatesAttended(user);
+//input: member
+//output: list of all dates not attended by that member
+export const getDatesNotAttended = (member) => {
+  const datesAttended = getDatesAttended(member);
   const allDates = getAllDates();
   const datesNotAttended = [];
   for (let date of allDates) {
@@ -80,35 +68,33 @@ export const getDatesNotAttended = (user) => {
   return datesNotAttended;
 };
 
-//get top 5 attendees
+//input: none
+//output: the top 5 members who've attended the most meetings
 export const getTop5Attendees = () => {
   const members = getAllMembers();
   members.sort(getNumAttendances);
   return members.slice(0, 5);
 };
 
-//get top 5 dates attended
+//input: none
+//output: the top 5 meetings that have been attended by the most members.
 export const getTop5Meetings = () => {
   const dates = getAllDates();
   dates.sort(getNumMembers);
   return dates.slice(0, 5);
 };
 
-//return date with % of people attended JSON format
-
-//get percent attended
+//input: date
+//output: percentage of members that attended
 export const getPercentAttended = (date) => {
-  const numMembers = getNumMembers()
-  const get
+  const numMembersPresent = getMembersPresent(date).length
+  const numAllMembers = getAllMembers(date).length
+  return numMembersPresent / numAllMembers;
 }
 
-//get average attendence
-
-
-//---------------------------------------------
-
-//get members from a specific date
-export const getMembers = (date) => {
+//input: date
+//output: get a list of members that attended
+export const getMembersPresent = (date) => {
   let members = [];
   for (let i in data) {
     if (data[i][1] == date) {
@@ -118,30 +104,22 @@ export const getMembers = (date) => {
   return members;
 };
 
-
-//get the number of members that attended a meeting
-export const getNumMembers = (date) => {
-  let count = 0;
+//input: date
+//output: get a list of members that attended
+export const getMembersAbsent = (date) => {
+  let members = [];
   for (let i in data) {
     if (data[i][1] == date) {
-      count++;
+      members.push(data[i][0]);
     }
   }
-  return count;
+  return members;
 };
 
-//Get the number of times a member attended.
-export const getNumAttendances = (member) => {
-  let count = 0;
-  for (let i in member) {
-    if (data[i][0] == member) {
-      count++;
-    }
-  }
-  return count;
-};
-
-//Get a dictionary-like object. keys = dates, values = # of members attended
+//input: none
+//output: JSON.
+//    keys = dates
+//    values = # of members attended
 export const getNumMembersObject = () => {
   let dates = getAllDates();
   let numMembersList = {};
@@ -152,6 +130,10 @@ export const getNumMembersObject = () => {
   return numMembersList;
 };
 
+//input: none
+//output: JSON
+//    keys = members
+//    values = # of meetings attended
 //Get a dictionary-like object. keys = members, values = # of meetings attended
 export const getNumAttendancesObject = () => {
   let members = getAllMembers();
@@ -162,3 +144,86 @@ export const getNumAttendancesObject = () => {
   }
   return numDatesList;
 };
+
+/*
+export const DateOrganized = () => {
+  for (let date of getAllDates()) {
+    let dateInfo = {};
+    dateInfo["membersPresent"] = getMembers(date);
+    dateInfo["membersAbsent"] = get
+
+    orderedByDateJSON[date] = dateInfo;
+  }
+}*/
+
+class DateOrganized {
+
+  constructor() {
+    let allDates = getAllDates();
+    this.dates = {};
+
+    for (let date of allDates) {
+      this.dates[date] = new Date(date);
+    }
+  }
+}
+
+class MemberOrganized {
+  constructor() {
+    let allMembers = getAllMembers();
+    this.members = {};
+    for (let member of allMembers) {
+      this.members[member] = new Member(member);
+    }
+  }
+}
+
+class Date {
+  constructor(date) {
+    console.log(date)
+    this.presentMembers = getMembersPresent(date);
+    this.absentMembers = getMembersAbsent(date);
+    this.percentMembersAttended = this.presentMembers.length / (this.presentMembers.length + this.absentMembers).length;
+  }
+}
+class Member {
+  constructor(member) {
+    console.log(member)
+    this.datesPresent = getDatesAttended(member);
+    this.datesAbsent = getDatesNotAttended(member);
+    this.percentDatesAttended = this.datesPresent.length / (this.datesPresent.length + this.datesAbsent.length);
+  }
+}
+
+/*
+JSON formats
+
+{
+
+date: {
+    list of members attended
+    list of members not attended
+    % of members who attended
+}
+
+]
+
+[
+
+user: {
+    list of dates attended
+    list of dates absent
+    % of dates attended
+}
+
+}
+
+top5attendees
+top5dates
+avg Dates attended per user
+avg users per date
+avg % of dates attended per user
+avg % of users attending per date
+
+
+*/
