@@ -230,7 +230,6 @@ export const getDateChartData = () => {
     absentList.push(date.absentMembers.length);
     percentAttendingList.push(date.percentMembersAttended);
   }
-
   return {
     date: dateList,
     membersPresent: presentList,

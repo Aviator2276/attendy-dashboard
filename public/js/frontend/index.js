@@ -7,6 +7,7 @@ import {
   offloadHome,
   loadHomeTheme,
   updateHomeTheme,
+  updateHomeCharts,
 } from './componenets/home.js';
 import {
   classView,
@@ -19,10 +20,18 @@ import {
   offloadStudent,
   loadStudentTheme,
   updateStudentTheme,
+  updateStudentCharts,
+  runStudentBackground,
 } from './componenets/student.js';
 
 const navbar = document.getElementById('navbar');
 const root = document.getElementById('mainContent');
+
+const updateInterval = 5000000;
+
+let homeDataRefresh;
+let classDataRefresh;
+let studentDataRefresh;
 
 export const main = () => {
   backendMain();
@@ -51,9 +60,13 @@ const changeToHome = () => {
   setTimeout(() => {
     loadHomeTheme();
   }, 10);
+  homeDataRefresh = setInterval(() => {
+    updateHomeCharts();
+  }, updateInterval);
 };
 const changeToClass = () => {
   root.innerHTML = classView();
+  clearInterval(homeDataRefresh);
   offloadHome();
   offloadStudent();
   setTimeout(() => {
@@ -62,8 +75,13 @@ const changeToClass = () => {
 };
 const changeTostudent = () => {
   root.innerHTML = studentView();
+  clearInterval(homeDataRefresh);
   offloadHome();
   offloadClass();
+  setTimeout(() => {
+    runStudentBackground();
+    loadStudentTheme();
+  }, 10);
 };
 
 export const updateTheme = () => {
