@@ -14,6 +14,7 @@ import {
   offloadClass,
   loadClassTheme,
   updateClassTheme,
+  updateClassCharts,
 } from './componenets/class.js';
 import {
   studentView,
@@ -72,6 +73,9 @@ const changeToClass = () => {
   setTimeout(() => {
     loadClassTheme();
   }, 10);
+  setTimeout(() => {
+    updateClassCharts();
+  }, updateInterval);
 };
 const changeTostudent = () => {
   root.innerHTML = studentView();

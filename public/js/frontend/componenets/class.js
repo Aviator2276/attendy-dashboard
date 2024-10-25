@@ -1,5 +1,5 @@
 import { graph, updateChart, deleteChart } from './line-chart.js';
-import { getAllDates } from '../../backend/script.js';
+import { getDateChartData } from '../../backend/script.js';
 
 const classLineGraphID = 'classLineGraph';
 
@@ -41,22 +41,14 @@ const classContent = () => {
   }, 500);
   return `
     <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
-        <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-slate-800 dark:text-slate-200 text-xs font-bold mb-2">
-            Choose a date:
-            </label>
-            <div class="relative">
-            <select class="block appearance-none w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-slate-100 focus:dark:bg-slate-900 border border-slate-500">
-                ${loadDateOptions()}
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
-                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-            </div>
-            </div>
-        </div>
         <section
-        class="h-80 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
+        class="h-90 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
         >
+        <h2
+                class="m-2 md:m-4 text-2xl font-bold text-slate-800 dark:text-slate-200"
+            >
+            Class Attendance Percentage
+        </h2>
         <div id="loaderIcon" class="pointer-events-none flex right-0 left-0 top-0 bottom-0 items-center px-2 text-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 101" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 me-1.5 animate-spin ml-auto mr-auto text-slate-200 dark:text-slate-800 fill-emerald-700 dark:fill-emerald-400">
                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -64,37 +56,31 @@ const classContent = () => {
             </svg>
         </div>
         ${graph(classLineGraphID, classLineGraphOptions)}
-        <div
-            class="grid grid-cols-1 items-center border-t border-gray-700 justify-between mt-2.5"
-        ></div>
         </section>
     </div>
     `;
 };
 
-const loadDateOptions = () => {
-  let dateOptions = `<option>All</option>`;
-  console.log(getAllDates());
-  for (let i in getAllDates()) {
-    dateOptions += `<option>${getAllDates()[i]}</option>`;
-  }
-  return dateOptions;
-};
-
 export const updateClassCharts = () => {
-  updateChart(homeLineGraphID, {
+  let percentArray = [];
+  Object.values(getDateChartData().percentMembersAttending).forEach(
+    (percent) => {
+      percentArray.push(Math.floor(percent * 100));
+    }
+  );
+  updateChart(classLineGraphID, {
     xaxis: {
       categories: Object.values(getDateChartData().date),
     },
     series: [
       {
         name: 'Attendances',
-        data: Object.values(getDateChartData().percentMembersAttending),
+        data: percentArray,
         color: '#10b981',
       },
       {
         name: 'Absences',
-        data: 1 - Object.values(getDateChartData().percentMembersAttending),
+        data: percentArray.map((x) => 100 - x),
         color: '#e11d48',
       },
     ],
@@ -127,7 +113,7 @@ const classLineGraphOptions = {
   chart: {
     height: '100%',
     maxWidth: '100%',
-    type: 'line',
+    type: 'area',
     fontFamily: 'Inter, sans-serif',
     dropShadow: {
       enabled: true,
@@ -157,9 +143,7 @@ const classLineGraphOptions = {
     style: {
       cssClass: 'text-xs font-medium',
     },
-    labels: {
-      formatter: (value) => value.toFixed(0) + '%',
-    },
+    formatter: (value) => value.toFixed(0) + '%',
   },
   stroke: {
     width: 6,
@@ -170,12 +154,12 @@ const classLineGraphOptions = {
   series: [
     {
       name: 'Attendances',
-      data: [20, 80, 35, 35, 75],
+      data: [],
       color: '#10b981',
     },
     {
       name: 'Absences',
-      data: [80, 20, 65, 65, 25],
+      data: [],
       color: '#e11d48',
     },
   ],
@@ -186,13 +170,7 @@ const classLineGraphOptions = {
     curve: 'smooth',
   },
   xaxis: {
-    categories: [
-      '8/10/2024',
-      '5/20/2424',
-      '2/5/2625',
-      '2/14/3403',
-      '4/25/3262',
-    ],
+    categories: [],
     labels: {
       show: true,
       style: {
@@ -214,5 +192,5 @@ const classLineGraphOptions = {
     },
     show: false,
   },
-  clip: true,
+  clip: false,
 };

@@ -61,12 +61,14 @@ const studentContent = () => {
         </div>
         <div class="grid grid-cols-2 gap-4">
           <section
-          class="h-80 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
+          class="h-90 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
           >
+          <h2
+                class="m-2 md:m-4 text-1xl font-bold text-slate-800 dark:text-slate-200"
+            >
+            Individual Attendance
+        </h2>
           ${graph(studentLineGraphID, studentLineGraphOptions)}
-          <div
-              class="grid grid-cols-1 items-center border-t border-gray-700 justify-between mt-2.5"
-          ></div>
           </section>
         </div>
     </div>
@@ -162,9 +164,15 @@ const studentLineGraphOptions = {
     highlightDataSeries: true,
     x: {
       show: false,
+      title: {
+        formatter: (seriesName) => seriesName,
+      },
     },
     y: {
       show: true,
+      title: {
+        formatter: (seriesName) => seriesName,
+      },
     },
   },
   dataLabels: {

@@ -36,21 +36,16 @@ const chartContainer = () => {
   setTimeout(() => {
     updateHomeCharts();
     document.getElementById('loaderIcon').remove();
-    // for (let i = 0; i >= 7; i++) {
-    //   if (Object.values(getDateChartData().date) == undefined) {
-    //     setTimeout(() => {
-    //       updateHomeCharts();
-    //       console.log(`Unable to retrieve, trying again. Try: ${i}`);
-    //     }, 1000);
-    //   } else {
-    //     break;
-    //   }
-    // }
   }, 500);
   return `
   <section
-    class="h-80 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
+    class="h-90 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
     >
+    <h2
+                class="m-2 md:m-4 text-2xl font-bold text-slate-800 dark:text-slate-200"
+            >
+            Class Attendance
+        </h2>
     <div id="loaderIcon" class="pointer-events-none flex right-0 left-0 top-0 bottom-0 items-center px-2 text-slate-700">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 101" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 me-1.5 animate-spin ml-auto mr-auto text-slate-200 dark:text-slate-800 fill-emerald-700 dark:fill-emerald-400">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
