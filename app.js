@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
+//const helmet = require('helmet');
+//const cors = require('cors');
 const rateLimiter = require('express-rate-limit');
 const path = require('path');
 const app = express();
@@ -45,7 +45,7 @@ app.use((err, req, res, next) => {
   res.status(500).sendFile(path.resolve(__dirname, './public/status/500.html'));
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 2070;
 
 const start = async () => {
   try {

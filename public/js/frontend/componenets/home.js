@@ -1,5 +1,6 @@
 import { graph, updateChart, deleteChart } from './line-chart.js';
 import { getDateChartData } from '../../backend/script.js';
+import { delay } from '../index.js';
 
 const homeLineGraphID = 'homeLineGraph';
 
@@ -36,7 +37,7 @@ const chartContainer = () => {
   setTimeout(() => {
     updateHomeCharts();
     document.getElementById('loaderIcon').remove();
-  }, 800);
+  }, delay);
   return `
   <section
     class="h-90 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"

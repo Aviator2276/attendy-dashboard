@@ -4,13 +4,14 @@ import {
   getMemberChartData,
   getMembersJSON,
 } from '../../backend/script.js';
+import { delay } from '../index.js';
 
 export const studentView = () => {
   return studentHeader() + studentContent();
 };
 
 const studentLineGraphID = 'studentLineGraph';
-let studentSelected = 'jsfarley07@jeffcityschools.org';
+let studentSelected = 'James Brown';
 
 const studentHeader = () => {
   return `
@@ -36,7 +37,7 @@ const studentContent = () => {
     studentSelection.classList.remove('animate-pulse');
     document.getElementById('loaderIcon').remove();
     updateStudentCharts();
-  }, 800);
+  }, delay);
   return `
     <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
         <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
@@ -161,28 +162,13 @@ const studentLineGraphOptions = {
   tooltip: {
     enabled: true,
     fillSeriesColor: false,
-    highlightDataSeries: true,
+    highlightDataSeries: false,
     x: {
-      show: false,
-      title: {
-        formatter: (seriesName) => seriesName,
-      },
+      show: true,
+      title: 'Attendances',
     },
     y: {
-      show: true,
-      title: {
-        formatter: (seriesName) => seriesName,
-      },
-    },
-  },
-  dataLabels: {
-    enabled: true,
-    offsetX: 10,
-    style: {
-      cssClass: 'text-xs font-medium',
-    },
-    labels: {
-      formatter: (value) => value.toFixed(0) + '%',
+      show: false,
     },
   },
   stroke: {
@@ -208,7 +194,7 @@ const studentLineGraphOptions = {
     },
   ],
   legend: {
-    show: true,
+    show: false,
   },
   stroke: {
     curve: 'smooth',

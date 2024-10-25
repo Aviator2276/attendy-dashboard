@@ -27,6 +27,7 @@ import {
 
 const navbar = document.getElementById('navbar');
 const root = document.getElementById('mainContent');
+export const delay = 1000;
 
 const updateInterval = 5000000;
 

@@ -1,5 +1,6 @@
 import { graph, updateChart, deleteChart } from './line-chart.js';
 import { getDateChartData } from '../../backend/script.js';
+import { delay } from '../index.js';
 
 const classLineGraphID = 'classLineGraph';
 
@@ -38,7 +39,7 @@ const classContent = () => {
     //     break;
     //   }
     // }
-  }, 800);
+  }, delay);
   return `
     <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
         <section
