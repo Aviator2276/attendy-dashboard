@@ -162,13 +162,24 @@ const studentLineGraphOptions = {
   tooltip: {
     enabled: true,
     fillSeriesColor: false,
-    highlightDataSeries: false,
+    highlightDataSeries: true,
     x: {
       show: true,
       title: 'Attendances',
     },
     y: {
       show: false,
+      title: 'Absences',
+    },
+  },
+  dataLabels: {
+    enabled: true,
+    offsetX: 10,
+    style: {
+      cssClass: 'text-xs font-medium',
+    },
+    labels: {
+      formatter: (value) => value.toFixed(0) + '%',
     },
   },
   stroke: {
@@ -194,7 +205,7 @@ const studentLineGraphOptions = {
     },
   ],
   legend: {
-    show: false,
+    show: true,
   },
   stroke: {
     curve: 'smooth',
