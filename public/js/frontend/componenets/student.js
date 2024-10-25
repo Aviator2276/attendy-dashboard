@@ -36,7 +36,7 @@ const studentContent = () => {
     studentSelection.classList.remove('animate-pulse');
     document.getElementById('loaderIcon').remove();
     updateStudentCharts();
-  }, 500);
+  }, 800);
   return `
     <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
         <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
@@ -59,7 +59,7 @@ const studentContent = () => {
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <section
           class="h-90 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"
           >
@@ -79,7 +79,7 @@ export const runStudentBackground = () => {
   document
     .getElementById('studentSelection')
     .addEventListener('change', (e) => {
-      console.log(e.target.value);
+      //console.log(e.target.value);
       studentSelected = e.target.value;
       updateStudentCharts();
     });
@@ -87,7 +87,7 @@ export const runStudentBackground = () => {
 
 const loadStudentOptions = () => {
   let dateOptions = ``;
-  console.log(getAllMembers());
+  //console.log(getAllMembers());
   for (let i in getAllMembers()) {
     dateOptions += `<option value="${getAllMembers()[i]}">${
       getAllMembers()[i]

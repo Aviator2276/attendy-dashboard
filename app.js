@@ -8,14 +8,13 @@ const app = express();
 
 const attendanceAPI = require('./routes/attendance');
 
-/*
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000,
-    max: 90,
+    max: 120,
     message: 'Too many requests. Please try again later.',
   })
-);*/
+);
 //app.use(cors); //Add in production
 /*
 app.use(
@@ -27,8 +26,7 @@ app.use(
       },
     },
   })
-);
-*/
+);*/
 
 app.use('/api/v1/attendance', attendanceAPI);
 

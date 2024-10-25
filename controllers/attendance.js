@@ -19,13 +19,13 @@ const getAttendanceList = async (req, res) => {
         else resolve(attendanceData);
       })
       .on('end', function () {
-        console.log('Online Database Success.');
+        //console.log('Online Database Success.');
       });
   });
 
   try {
     dataRequest.then((data) => {
-      console.log(data);
+      //console.log(data);
       res.status(StatusCodes.OK).json(data);
     });
   } catch (error) {

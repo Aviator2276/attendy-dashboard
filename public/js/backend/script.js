@@ -8,17 +8,17 @@ export const backendMain = () => {
     data = input_data;
 
     //let dateOrganized = new DateOrganized();
-    console.log(getDatesJSON());
+    //console.log(getDatesJSON());
     //let memberOrganized = new MemberOrganized();
-    console.log(getMembersJSON());
+    //console.log(getMembersJSON());
 
-    //console.log(getTop5Attendees());
-    //console.log(getTop5Meetings());
+    ////console.log(getTop5Attendees());
+    ////console.log(getTop5Meetings());
 
-    //console.log(getMeetingsMembersAttended());
+    ////console.log(getMeetingsMembersAttended());
 
-    console.log(getDateChartData());
-    console.log(getMemberChartData());
+    //console.log(getDateChartData());
+    //console.log(getMemberChartData());
   });
 };
 
@@ -208,7 +208,7 @@ export const getMeetingsMembersAttended = () => {
   }
   for(let i in data){
     let selectedData = data[i]
-    console.log(selectedData)
+    //console.log(selectedData)
     meetingData[selectedData[1]].push(selectedData[0])
   }
   return meetingData;

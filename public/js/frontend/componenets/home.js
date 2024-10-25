@@ -36,7 +36,7 @@ const chartContainer = () => {
   setTimeout(() => {
     updateHomeCharts();
     document.getElementById('loaderIcon').remove();
-  }, 500);
+  }, 800);
   return `
   <section
     class="h-90 m-2 md:m-4 p-4 text-center border rounded-lg shadow sm:p-8 bg-slate-200 border-slate-300 dark:bg-slate-800 dark:border-slate-700"

@@ -32,13 +32,13 @@ const classContent = () => {
     //   if (Object.values(getDateChartData().date) == undefined) {
     //     setTimeout(() => {
     //       updateHomeCharts();
-    //       console.log(`Unable to retrieve, trying again. Try: ${i}`);
+    //       //console.log(`Unable to retrieve, trying again. Try: ${i}`);
     //     }, 1000);
     //   } else {
     //     break;
     //   }
     // }
-  }, 500);
+  }, 800);
   return `
     <div class="mx-auto px-4 md:max-w-6xl py-6 md:px-6 lg:px-8">
         <section
