@@ -2,7 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const csv = require('csv-parser');
 const needle = require('needle');
 const urlData =
-  'https://docs.google.com/spreadsheets/d/1nVjPO0adqv3Ub0Ya1q-k1LjfyvZq2kdI5mJ7y8wQFjs/gviz/tq?tqx=out:csv&sheet=data';
+  'https://docs.google.com/spreadsheets/d/1iip1hmuenEa6-QYbSVmxrJ93ZblsljQmzNEN39UMumQ/gviz/tq?tqx=out:csv&sheet=data';
 const attendanceDB = require('../db/attendance.json');
 
 const getAttendanceList = async (req, res) => {

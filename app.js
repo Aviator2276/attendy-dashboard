@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-//const helmet = require('helmet');
-//const cors = require('cors');
+const helmet = require('helmet');
+const cors = require('cors');
 const rateLimiter = require('express-rate-limit');
 const path = require('path');
 const app = express();
@@ -15,8 +15,8 @@ app.use(
     message: 'Too many requests. Please try again later.',
   })
 );
-//app.use(cors); //Add in production
-/*
+app.use(cors); //Add in production
+
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -26,7 +26,7 @@ app.use(
       },
     },
   })
-);*/
+);
 
 app.use('/api/v1/attendance', attendanceAPI);
 
